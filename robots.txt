@@ -1,1 +1,1 @@
-Sitemap: https://sussmanbu.github.io/ma4615-final-project-quarto/sitemap.xml
+Sitemap: https://sussmanbu.github.io/ma-4615-fa23-final-project-burg-team-9/sitemap.xml
