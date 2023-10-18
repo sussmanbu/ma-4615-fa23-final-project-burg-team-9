@@ -25,15 +25,19 @@ The members of this team are below.
 
 ## Woo Hyeon (Luke) Her
 
-Woo Hyeon is a student studying Data Science. www.github.com/365LIT
+Woo Hyeon is an undergraduate student studying Data Science. www.github.com/365LIT
 
 ## Megha Polavarapu
  
-Megha Polavarapu is an un undergraduate student at Boston University studying Mathematics.
+Megha Polavarapu is an undergraduate student at Boston University studying Mathematics.
 
 ## Holly Gustavsen 
 
-Holly is an undergratudate student studying Biology at BU. 
+Holly is an undergraduate student studying Biology at BU.
+
+## Jaejoong Kim
+
+Jaejoong Kim is an undergraduate student studying Data Science and Business at BU. 
 
 <!-- Please leave in the information below -->
 
