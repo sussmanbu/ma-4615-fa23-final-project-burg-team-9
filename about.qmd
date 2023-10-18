@@ -27,7 +27,9 @@ The members of this team are below.
 
 Woo Hyeon is a student studying Data Science. www.github.com/365LIT
 
+## Megha Polavarapu
 
+Megha Polavarapu is an un undergraduate student at Boston University studying Mathematics.
 
 <!-- Please leave in the information below -->
 
