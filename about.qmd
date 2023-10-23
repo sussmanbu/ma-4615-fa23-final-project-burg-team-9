@@ -39,6 +39,11 @@ Holly Gustavsen is an undergraduate student studying Biology at BU.
 
 Jaejoong Kim is an undergraduate student studying Data Science and Business at BU. 
 
+## Pengfei Wang
+
+Pengfei Wang is an graduate student studying Statistics at BU.
+
+
 <!-- Please leave in the information below -->
 
 ### About this Template.
