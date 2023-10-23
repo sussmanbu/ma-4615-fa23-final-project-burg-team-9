@@ -19,7 +19,7 @@ about:
 
 This comes from the file `about.qmd`.
 
-This is a website for the final project for MA[46]15 Data Science with R by Team TEAMNAME.
+This is a website for the final project for MA[46]15 Data Science with R by Team BURG.
 The members of this team are below.
 
 
@@ -33,7 +33,7 @@ Megha Polavarapu is an undergraduate student at Boston University studying Mathe
 
 ## Holly Gustavsen 
 
-Holly is an undergraduate student studying Biology at BU.
+Holly Gustavsen is an undergraduate student studying Biology at BU. 
 
 ## Jaejoong Kim
 
