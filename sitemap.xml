@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/sussmanbu/ma-4615-fa23-final-project-burg-team-9/posts/2023-10-15-getting-started/getting-started.html</loc>
-    <lastmod>2023-10-18T13:52:41.861Z</lastmod>
+    <loc>https://sussmanbu.github.io/ma-4615-fa23-final-project-burg-team-9/data.html</loc>
+    <lastmod>2023-10-23T13:37:13.710Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/sussmanbu/ma-4615-fa23-final-project-burg-team-9/posts/2023-10-13-first-team-meeting/first-team-meeting.html</loc>
-    <lastmod>2023-10-18T13:52:42.339Z</lastmod>
+    <loc>https://sussmanbu.github.io/ma-4615-fa23-final-project-burg-team-9/analysis.html</loc>
+    <lastmod>2023-10-23T13:37:09.934Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/sussmanbu/ma-4615-fa23-final-project-burg-team-9/index.html</loc>
-    <lastmod>2023-10-18T13:52:42.915Z</lastmod>
+    <loc>https://sussmanbu.github.io/ma-4615-fa23-final-project-burg-team-9/index.html</loc>
+    <lastmod>2023-10-23T13:37:03.701Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/sussmanbu/ma-4615-fa23-final-project-burg-team-9/about.html</loc>
-    <lastmod>2023-10-18T13:52:43.285Z</lastmod>
+    <loc>https://sussmanbu.github.io/ma-4615-fa23-final-project-burg-team-9/posts/2023-10-13-first-team-meeting/first-team-meeting.html</loc>
+    <lastmod>2023-10-23T13:37:02.446Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/sussmanbu/ma-4615-fa23-final-project-burg-team-9/analysis.html</loc>
-    <lastmod>2023-10-18T13:52:46.209Z</lastmod>
+    <loc>https://sussmanbu.github.io/ma-4615-fa23-final-project-burg-team-9/posts/2023-10-15-getting-started/getting-started.html</loc>
+    <lastmod>2023-10-23T13:37:01.766Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/sussmanbu/ma-4615-fa23-final-project-burg-team-9/big_picture.html</loc>
-    <lastmod>2023-10-18T13:52:46.598Z</lastmod>
+    <loc>https://sussmanbu.github.io/ma-4615-fa23-final-project-burg-team-9/posts/2023-10-20-blog-post-1/blog-post-1.html</loc>
+    <lastmod>2023-10-23T13:37:03.002Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/sussmanbu/ma-4615-fa23-final-project-burg-team-9/data.html</loc>
-    <lastmod>2023-10-18T13:52:48.906Z</lastmod>
+    <loc>https://sussmanbu.github.io/ma-4615-fa23-final-project-burg-team-9/about.html</loc>
+    <lastmod>2023-10-23T13:37:04.147Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sussmanbu.github.io/ma-4615-fa23-final-project-burg-team-9/big_picture.html</loc>
+    <lastmod>2023-10-23T13:37:10.509Z</lastmod>
   </url>
 </urlset>
