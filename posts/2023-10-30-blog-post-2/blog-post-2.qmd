@@ -1,0 +1,8 @@
+---
+title: "Blog Post 2"
+author: ""
+date: "2023-10-30"
+date-modified: "2023-10-30"
+draft: FALSE
+---
+
