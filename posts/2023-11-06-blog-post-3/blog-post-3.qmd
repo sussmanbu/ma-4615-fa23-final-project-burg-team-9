@@ -12,8 +12,9 @@ draft: FALSE
 ---
 
 ```{r}
-library(ggplot2)
-library(tidyverse)
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages((library(tidyverse))
+
 load("C:/Users/pfwan/OneDrive/Desktop/MA 615/ma-4615-fa23-final-project-burg-team-9/dataset/traffic_violations.RData")
 mydata <- traffic_data_clean
 
