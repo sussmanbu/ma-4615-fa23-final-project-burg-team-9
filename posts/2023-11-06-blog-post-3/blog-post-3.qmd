@@ -8,13 +8,13 @@ image: ""
 image-alt: ""
 categories: []
 date-modified: "2023-11-06"
+output-file: html_document
 draft: FALSE
 ---
 
 ```{r}
 library(ggplot2)
 library(tidyverse)
-
 load("C:/Users/pfwan/OneDrive/Desktop/MA 615/ma-4615-fa23-final-project-burg-team-9/dataset/traffic_violations.RData")
 mydata <- traffic_data_clean
 
