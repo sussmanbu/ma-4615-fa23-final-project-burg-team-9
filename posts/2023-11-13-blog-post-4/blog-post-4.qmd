@@ -34,34 +34,29 @@ ggplot(wd, aes(x = Race, fill = Accident)) +
 ```{r}
 # Statistical Modeling
 
-# library(tidyverse)
+library(tidyverse)
 
 traffic_data_clean <- traffic_data_clean |>
-  rename(time_of_stop = 'Time Of Stop')
+  mutate(Race_binary = ifelse(Race == "Hispanic", 1, 0))
 
-traffic_data_clean <- traffic_data_clean |>
-  mutate(Accident = as.numeric(Accident == "Yes"))
+filtered_data <- traffic_data_clean |>
+  filter(Year >= 2000 & Year <= 2023) |>
+  mutate(Numbered_Year = Year - 2000)
 
-traffic_data_clean <- traffic_data_clean |>
-  mutate(race_binary = as.numeric(Race == "HISPANIC"))
+model <- glm(Race_binary ~ Numbered_Year, family = binomial, data = filtered_data)
 
-model <- lm(Accident ~ time_of_stop + race_binary, data = traffic_data_clean)
-
-traffic_data_clean <- traffic_data_clean |>
-  mutate(predictions = predict(model, newdata = traffic_data_clean))
-
-ggplot(traffic_data_clean, aes(x = time_of_stop, y = Accident, color = Race)) +
-  geom_point(color = "blue") +
-  geom_line(aes(y = predictions), color = "red") +
-  labs(
-    title = "Linear Regression",
-    x= " ",
-    y = "Accident (1 for Yes, 0 for No)"
-  )
-
+ggplot(filtered_data, aes(x = Numbered_Year, y = Race_binary)) +
+  geom_point() +
+  geom_smooth(method = 'glm', formula = y ~ x, se = FALSE, color = "blue", size = 0.5) +
+  labs(title = "Logistic Regression: Race_binary ~ Numbered_Year",
+       x = "Numbered_Year",
+       y = "Race_binary") +
+  theme_minimal()
 ```
   From our last blog post, we saw that one of the most big, obvious trends was that the Driver’s License State category was predominantly from Maryland. Since this is to be expected given that the data is from a county in Maryland, this may be a boring part of the data. So, we chose to explore some other relationships that might be confounded by this major trend we identified.
+  
   To explore our data further in this way, we first looked at relationships among different variables and groupings by looking for trends or patterns between race categories and arrest types as well as race categories and accident types. We then focused on developing a better understanding of the specific relationship between race and arrest types and race and accident types by also including the time of day to see if this too affects the outcome of the traffic violation.
-  Beginning to think about statistical modeling, the response variable that we are interested in is the outcome of the traffic violation, which in our data is represented as arrest type and accident type. The predictor variables we are interested in are race and time of day. To include time of day we would need to perform some transformations to better capture the relationships between the variables. Since time is going in a loop as it goes to the end of the day and then the values go back down to 0, we need to transform this column of the data to be continuous instead of a cycle. We will fit a linear model so that we can see how the predictor variables affect the response variable. For this, we will also need another transformation to represent the outcome of the traffic violation as binary variables. For the arrest type, we can choose “A – Marked Patrol” to be represented by 1, and each other arrest type to be 0. Similarly, for the accident column, we can choose “Yes” to be 1 and “No” to be 0. After these transformations, we can use the categorical variables in the linear model. For our initial statistical modeling, we began by using a linear model with the time of stop as the response variable and accident type and race as predictor variables. For this initial modeling, we transformed “Hispanic” to be 1 and every other race category to be 0. For our future statistical modeling, we will also include the other race categories to see the trends and patterns between the different categories. This initial model showed a straight horizontal line after the regression, so in our further analysis we will add more continuous variables to find a model that reveals more about the data and its trends.
-
-
+  
+  Beginning to think about statistical modeling, the response variable that we are interested in is the outcome of the traffic violation, which in our data is represented as arrest type and accident type. The predictor variables we are interested in are race and time of day. To include time of day we would need to perform some transformations to better capture the relationships between the variables. Since time is going in a loop as it goes to the end of the day and then the values go back down to 0, we need to transform this column of the data to be continuous instead of a cycle. We will fit a linear model so that we can see how the predictor variables affect the response variable. For this, we will also need another transformation to represent the outcome of the traffic violation as binary variables. For the arrest type, we can choose “A – Marked Patrol” to be represented by 1, and each other arrest type to be 0. Similarly, for the accident column, we can choose “Yes” to be 1 and “No” to be 0. After these transformations, we can use the categorical variables in the linear model.
+  
+  For our initial statistical modeling, we began by using a logistic model with the race as the response variable and the year as the predictor variable to observe the potential relationships between the differences in race categories reported for traffic violations over a number of years. For this initial modeling, we transformed the race variable to be binary by mutating “Hispanic” to be 1 and every other race category to be 0. We also transformed the Year variable to be represented as a value showing how many years from 2000 it is. We also only included the years 2000-2023 to first see how we could analyze a subset of the data on a smaller scale. For our future statistical modeling, we will also include the other race categories to see the trends and patterns between the different categories and include more years to see more widespread trends. This initial model showed a straight horizontal line after the regression, so in our further analysis we will additionally add more variables to find a model that reveals more about the data and its trends.
