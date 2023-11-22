@@ -1,0 +1,21 @@
+---
+title: "Blog Post 5"
+subtitle: "Data Combination Discussion"
+author: "Team 9 "
+date: "2023-11-20"
+categories: []
+date-modified: "2023-11-20"
+draft: FALSE
+---
+
+Acknowledging our dataset's origins in Montgomery's daily traffic records, , If we want to find possible datasets to combine with, we believe that focusing on the data resource from different aspects of Montgomery is a good starting point. After primary discussion, We decided to identify location-related factors as the main combine factor objects. Government's official dataset, replete with detailed location coordinates, longitude, latitude, and street names, will be the prime candidates for dataset combination.
+
+Upon thorough exploration, two datasets, Crash Reports surfaced as an ideal contender for combination. In previous discussions and studies, we decide to  focus towards understanding the intricate relationship between arrest types and accident types, with race as a central analytical factor. The "Crash Report" dataset stood out due to its comprehensive details on accidents, including location specifics such as intersections, weather conditions, and collision types. This richness in data allows for a more nuanced construction of our predictive model by incorporating variables that influence accident types. Therefore, it becomes an ideal combined dataset. ( https://data.montgomerycountymd.gov/Public-Safety/Crash-Reporting-Incidents-Data/bhju-22kf )
+
+Given that both databases utilize the same record format for data collected from identical locations, various sharing factors can be considered as combined factors. After experimenting with Latitude, Longitude, and Location, the decision was reached to use Latitude and Longitude as the primary integration factors, offering the most optimal analysis environment. This choice not only ensures seamless database merging but also guarantees analysis precision. From the perspective of data visualization, using location as a combining factor can help us to generate real-world latitude/longitude charts to help us visualize the frequency of occurrence of the arrest type and accident type in each region, which will bring us more three-dimensional analysis results.On the another perspective of linear modeling, more variables can be selected and integrated to help us add more variables to our linear model and increase the accuracy of the model. 
+
+In conclusion, by focusing on regionally relevant factors, combining the dataset Crash reports with our original is a valuable data consolidation option.This approach not only ensures comprehensive analysis but also lays the groundwork for a more detailed and accurate predictive model. The use of Latitude and Longitude as key integration factors enhances our analytical capabilities, allowing for more insightful data visualization and improved linear modeling accuracy. While we are having difficulties joining the data by both latitude and longitude, our plan going forward is to combine the two columns into one in order to use this to consolidate the two datasets. One of the main errors we are having trouble with is that there was an unexpected many to many relationship between x and y, which we will continue to figure out going forward. In subsequent analyses, we will also consider how more specific filtering and combining datasets can take advantage of these potential strengths, detailing our analysis. In the meantime, finding more suitable data that can be used as combining objects is also a necessary step to accomplish. So far we have also searched for several usable candidates such as the dataset Crime Report. More details will be agreed upon in subsequent discussions. 
+
+
+
+
