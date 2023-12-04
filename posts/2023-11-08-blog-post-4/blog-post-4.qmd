@@ -1,0 +1,72 @@
+---
+title: "Blog Post 4"
+subtitle: ""
+description: ""
+author: ""
+date: "2023-11-08"
+image: ""
+image-alt: ""
+categories: []
+date-modified: "2023-11-08"
+draft: TRUE
+---
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(stringr))
+
+crash_data <- read_csv(here::here("dataset-ignore", "Crash_Reporting_-_Incidents_Data.csv"))
+
+crash_data_clean <- crash_data |>   
+  select(Latitude,
+         Longitude, 
+         "Driver Substance Abuse", 	
+         "Non-Motorist Substance Abuse", 
+         "At Fault",
+         "Collision Type")
+  
+traffic_data_2 <- read_csv(here::here("dataset-ignore", "Traffic_Violations_20231103.csv")) 
+
+traffic_data_2_clean <- traffic_data_2 |>   
+  select("Date Of Stop", 
+         "Time Of Stop", 
+         Description, 
+         Location, 
+         Accident, 
+         Fatal, 
+         Alcohol, 
+         "Violation Type", 
+         Race, 
+         Gender, 
+         "Arrest Type",
+         Latitude,
+         Longitude) 
+```
+```{r}
+crash_data_clean
+traffic_data_2_clean
+```
+
+
+```{r}
+crash <- crash_data_clean |>
+  unite(Coordinates, c(Latitude, Longitude), sep = ",") |>
+  rename(Driver_Substance_Abuse = "Driver Substance Abuse", Type = "Collision Type") |>
+  select(Coordinates, Driver_Substance_Abuse, Type)
+
+traffic <- traffic_data_2_clean |>
+  unite(Coordinates, c(Latitude, Longitude), sep = ",") |>
+  rename(Driver_Substance_Abuse = "Alcohol", Type = "Violation Type") |>
+  select(Coordinates, Driver_Substance_Abuse, Type)
+```
+
+```{r}
+combined <- union(crash, traffic)
+combined
+```
+
+
+
+
+
