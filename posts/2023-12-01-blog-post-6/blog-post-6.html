@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -57,7 +91,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -150,7 +185,42 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Blog post 6</p>
+<p>We tried a number of different exploratory data analysis, and here is one example. We believe GLM (“general” linear model) could explain our dataset better than other tools. This is the code we used:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">'dataset/traffic_violations.RData'</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>traffic_data_clean<span class="sc">$</span>Arrest_Type_Numeric <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">grepl</span>(<span class="st">"Marked"</span>, traffic_data_clean<span class="sc">$</span><span class="st">`</span><span class="at">Arrest Type</span><span class="st">`</span>), <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(Arrest_Type_Numeric <span class="sc">~</span> Race <span class="sc">+</span> Alcohol <span class="sc">+</span> Gender, <span class="at">data =</span> traffic_data_clean, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = Arrest_Type_Numeric ~ Race + Alcohol + Gender, 
+    family = "binomial", data = traffic_data_clean)
+
+Coefficients:
+                     Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)          2.725248   0.013278 205.248  &lt; 2e-16 ***
+RaceBLACK           -0.106987   0.013753  -7.779 7.31e-15 ***
+RaceHISPANIC        -0.040486   0.014272  -2.837  0.00456 ** 
+RaceNATIVE AMERICAN  0.199749   0.079290   2.519  0.01176 *  
+RaceOTHER           -0.464586   0.016297 -28.508  &lt; 2e-16 ***
+RaceWHITE           -0.296085   0.013554 -21.844  &lt; 2e-16 ***
+AlcoholYes          -2.479348   0.039952 -62.059  &lt; 2e-16 ***
+GenderM              0.005671   0.006010   0.944  0.34542    
+GenderU              0.763705   0.090348   8.453  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 984980  on 1885447  degrees of freedom
+Residual deviance: 979510  on 1885439  degrees of freedom
+AIC: 979528
+
+Number of Fisher Scoring iterations: 5</code></pre>
+</div>
+</div>
+<p>We first changed the categorical variable into a numeric variable of 0 and 1 to run the test. If the word “Marked” is contained, the value of 1 is assigned. If not, 0 is assigned. Based on Race, Alcohol, and Gender, we tried to predict the probability of Arrest Type. The intercept is 2.725248; this is the log-odds of the Arrest Type when all other predictor variables are zero. We are still trying out different EDA, with GLM being the priority. We are still unsatisfied with produced results, but we believe we could reach a conclusion that everyone can agree. We plan to polish our visualizations and tables after finalizing our model to best show the data in terms of our method of statistical modeling. This will include highlighting information that informed the variables we made the decision to include. For example, in our scatterplot from our exploratory data analysis we will highlight the variables race, alcohol, and gender which seemed to have a potential relationship with arrest_type_numeric to show that this contributed to these variables being chosen for our statistical model. We also plan to add titles to our visualizations and tables to more clearly show what is being modeled in that particular plot. Additionally, we will polish up our data visualizations by adding captions and annotations to write a short summary of what our takeaways from that visualization were. For example, in the scatterplot mentioned before we will add a caption or annotation saying that only race, alcohol, and gender appear to potentially have a relationship with arrest_type_numeric. We also plan to improve our figures using the options for displaying tables from https://gallery.htmlwidgets.org/, particularly the scatterD3 option to include both colors and comments more clearly for specific points in our plots. We are also planning to use pairsD3 to be able to show various relationships between variables that we explored to choose our model.</p>
 
 
 
