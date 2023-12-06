@@ -16,55 +16,62 @@ suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(stringr))
 
-crash_data <- read_csv(here::here("dataset-ignore", "Crash_Reporting_-_Incidents_Data.csv"))
+crash_data <- read_csv(here::here("dataset-ignore", "Crash_Reporting_-_Incidents_Data.csv"), 
+         show_col_types = FALSE)
 
 crash_data_clean <- crash_data |>   
   select(Latitude,
          Longitude, 
          "Driver Substance Abuse", 	
-         "Non-Motorist Substance Abuse", 
-         "At Fault",
-         "Collision Type")
-  
-traffic_data_2 <- read_csv(here::here("dataset-ignore", "Traffic_Violations_20231103.csv")) 
+         "Collision Type") |>
+  rename(driver_substance_abuse = "Driver Substance Abuse", type = "Collision Type") 
+
+traffic_data_2 <- read_csv(here::here("dataset-ignore", "Traffic_Violations_20231103.csv"), 
+         show_col_types = FALSE) 
 
 traffic_data_2_clean <- traffic_data_2 |>   
-  select("Date Of Stop", 
-         "Time Of Stop", 
-         Description, 
-         Location, 
-         Accident, 
-         Fatal, 
-         Alcohol, 
+  select(Alcohol, 
          "Violation Type", 
-         Race, 
-         Gender, 
-         "Arrest Type",
          Latitude,
-         Longitude) 
-```
-```{r}
-crash_data_clean
-traffic_data_2_clean
-```
-
-
-```{r}
-crash <- crash_data_clean |>
-  unite(Coordinates, c(Latitude, Longitude), sep = ",") |>
-  rename(Driver_Substance_Abuse = "Driver Substance Abuse", Type = "Collision Type") |>
-  select(Coordinates, Driver_Substance_Abuse, Type)
-
-traffic <- traffic_data_2_clean |>
-  unite(Coordinates, c(Latitude, Longitude), sep = ",") |>
-  rename(Driver_Substance_Abuse = "Alcohol", Type = "Violation Type") |>
-  select(Coordinates, Driver_Substance_Abuse, Type)
+         Longitude) |>
+  rename(driver_substance_abuse = "Alcohol", type = "Violation Type") 
 ```
 
 ```{r}
-combined <- union(crash, traffic)
-combined
+combined <- union(crash_data_clean, traffic_data_2_clean) |>
+  filter(between(Latitude, 38.5, 39.5), between(Longitude, -78, -76))
 ```
+
+```{r}
+library(tidycensus)
+library(sf)
+census_api_key("d60e1c9aa5c6a445f991501def579b743fc1a5d8", install = TRUE)
+```
+
+```{r}
+v2020 <- load_variables(2020, "pl", cache = TRUE)
+
+vars10 <- c("P1_003N", "P1_004N", "P1_005N", "P1_006N", "P1_007N")
+
+md <- get_decennial(geography = "block group", variables = vars10, year = 2020,
+                    summary_var = "P1_001N", state = "MD", county = c("Montgomery county"), geometry = TRUE) %>%
+  mutate(pct = 100 * (value / summary_value))
+
+combined_geo <- combined |>
+  st_as_sf(coords = c("Longitude", "Latitude")) %>% 
+  st_set_crs(4269)
+```
+
+```{r}
+ggplot() + geom_sf(data = md, aes(fill = pct)) + facet_wrap(~variable) 
+```
+
+```{r}
+ggplot() + geom_sf(data = md, aes(fill = pct)) + geom_sf(data = combined_geo, aes(color = type), alpha = 0.1, size = 0.1) + facet_wrap(~variable) + theme(legend.position = "none")
+```
+
+
+
 
 
 
