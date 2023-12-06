@@ -5,7 +5,7 @@ toc: true
 draft: FALSE
 ---
 
-![](images/The_Big_Picture_2.jpeg)
+![](https://www.eastonlawoffices.com/wp-content/uploads/2022/03/odds-of-dying-in-a-car-crash-in-california-1200x675.jpg)
 
 This comes from the file `big_picture.Rmd`.
 
