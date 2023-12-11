@@ -1,0 +1,14 @@
+---
+title: "Blog Post 7"
+subtitle: "Tentative Thesis, Evidence, and Next Steps"
+author: "Team 9"
+date: "2023-12-11"
+date-modified: "2023-12-11"
+draft: FALSE
+---
+Our tentative thesis statement is that non-white populations of Montgomery County, Maryland have more instances of traffic violations when compared to areas of the county that are predominantly white. After our exploratory data analysis, we noticed patterns between race dispersity and location from our longitude and latitude data columns. This became more evident in our plots showing the map of Montgomery County, in which we colored the map by the proportion of the population that is of a certain race category. Since we split this map into separate maps for each race category in our dataset, we were able to see that when we overlaid points for where the traffic violations occurred, the clusters of traffic violation incidents were generally in and around the areas where the proportion of the population that is white was the lowest, and the proportion of the population that is of different race categories is higher. Therefore, we included race as a necessary variable in our statistical model for predicting arrest types.
+
+We also included alcohol and gender to improve the model’s accuracy. We chose these predictor variables to include from our exploratory data analysis as well. We could see a pattern indicating that alcohol may be related to arrest type, as well as a trend that appeared to show gender being related to arrest type as well. We additionally used AIC values to determine groupings of predictor variables to find the best fitting model for our data. Because the model using race, alcohol, and gender to predict arrest type had the lowest AIC, it confirmed to us that these variables should be included in our statistical model. 
+
+Therefore, both our exploratory data analysis and our model center around our thesis, which states that traffic violations are more likely to occur in areas of Montgomery County, Maryland that have higher proportions of the population as racial categories other than white. After our exploratory data analysis brought these patterns and trends to our attention, we were able to create a glm model for the binomial variable arrest type. While we will continue to improve our model’s accuracy for our next steps, we aim to use this model to show our traffic violation arrest types vary by location based on the proportion of the population that is non-white, showing how different violations are more likely to occur when the highest proportion of the population of an area is non-white.
+
