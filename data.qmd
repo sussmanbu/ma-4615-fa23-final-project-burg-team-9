@@ -5,6 +5,8 @@ toc: true
 draft: false
 ---
 
+![](https://www.montgomerycountymd.gov/mcgresponsive/Resources/Images/countyseal.png)
+
 The data was originally found on Kaggle.com and then source data was later found on the following [dataMontomery](https://data.montgomerycountymd.gov/Public-Safety/Traffic-Violations/4mse-ku6q) website. This data is updated frequently, our dataset is from November 3rd, 2023. The data was originally collected by the Montgomery County Police Station in Maryland. It was collected for the purpose of observing drug and traffic violations and creating a government and police record of violations. It was put together using traffic violation information from all electronic traffic violations issued in Montgomery County. 
 
 The data file that was used was originally in the form of a CSV file. This original dataset had 43 variables, but because it was large, we chose to use only the more relevant 14 variables in our cleaned data set, which are Date of stop, Time of stop, Description, Location, Accident, Fatal, Alcohol, Driver’s License State, Year, Make, Model, Violation type, Race, and Arrest type. Description shows what the specific charge was, such as exceeding the posted speed limit. Location indicates the specific street in Montgomery County where the violation occurred, while Driver’s License State shows the state where the driver is from, which is not necessarily Maryland. Make and Model refers to the car that was being driven. Fatal and Alcohol only say Yes or No, while Violation Type and Arrest Type provide more specific descriptions of the violation that occurred and its outcome, respectively.

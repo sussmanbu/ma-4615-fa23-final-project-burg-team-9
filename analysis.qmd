@@ -5,7 +5,7 @@ toc: true
 draft: false
 ---
 
-![](https://upload.wikimedia.org/wikipedia/commons/7/77/Pebbleswithquarzite.jpg)
+![](https://www.euractiv.com/wp-content/uploads/sites/2/2020/07/shutterstock_1750503608-800x600.jpg)
 
 
 This comes from the file `analysis.qmd`.
