@@ -23,9 +23,10 @@ With our overarching objective aimed at generating a comprehensive analysis of t
 In our gathered datasets, the racial demographics in Montgomery County were delineated into six primary categories: Asian, White, Black, Hispanic, Native American, and other. It is evident that each of these population segments experiences varying levels of accident rates. To delve into the specifics, we sought to ascertain the respective crash rates for each population group, aiming to discern the percentage contribution of traffic accidents within the county. Guided by this objective, we meticulously crafted an initial visual representation in the form of a pie chart.
 
 ```{r, message=FALSE, warning=FALSE}
-library(ggplot2)
-library(dplyr)
-library(stringr)
+suppressPackageStartupMessages(library(dplyr)) 
+suppressPackageStartupMessages(library(ggplot2)) 
+suppressPackageStartupMessages(library(stringr)) 
+
 crash_data <- read.csv(here::here("dataset-ignore", "Crash_Reporting_-_Incidents_Data.csv"))
 load(here::here("dataset", "traffic_violations.RData"))
 df <- traffic_data_clean
@@ -39,7 +40,7 @@ subset1 <- subset(df,df$Accident == "Yes")
 RACE <- subset1$Race 
 ACCIDENT <- subset1$Accident
 Contengency_table3 <- table(RACE,ACCIDENT)
-print(Contengency_table3)
+# print(Contengency_table3)
 Contingency_df3 <- as.data.frame(as.table(Contengency_table3))
 colnames(Contingency_df3) <- c("Race", "Accident", "Count")
 ratio_df3 <- Contingency_df3 %>%
@@ -86,11 +87,8 @@ Figure 2 presents a detailed breakdown of accident rates within each racial cate
 From first glance at this data, one might assume that prioritizing Hispanic neighborhoods emerges as an effective strategy to reduce both the total number of accidents and the accident rate. However when we look at the locations of both crashes and violations we see a different trend. 
 
 ```{r, message=FALSE, warning=FALSE}
-suppressPackageStartupMessages(library(tidyverse)) 
-suppressPackageStartupMessages(library(ggplot2)) 
-suppressPackageStartupMessages(library(stringr)) 
-library(tidycensus) 
-library(sf) 
+suppressPackageStartupMessages(library(tidycensus)) 
+suppressPackageStartupMessages(library(sf)) 
 
 # census_api_key("d60e1c9aa5c6a445f991501def579b743fc1a5d8", install = TRUE) 
 
@@ -231,7 +229,7 @@ y_train <- Y[split_index]
 y_test <- Y[-split_index]
 model <- glm(y_train ~ ., data = cbind(y_train, x_train), family = "binomial")
 summarytable<- summary(model)
-summarytable
+# summarytable
 coefficients <- coef(model)
 variable_names <- names(coefficients)
 importances <- data.frame(
