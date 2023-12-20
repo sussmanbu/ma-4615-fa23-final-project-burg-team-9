@@ -12,18 +12,17 @@ This comes from the file `analysis.qmd`.
 
 ### An Initial Exploration Before Delving into Analysis: Motivation, Interests, Questions 
 
-In our pursuit of comprehensively understanding and analyzing the determinants of traffic accidents in Montgomery County, we initiated our investigation by designating "Accident" as the focal point in our dataset. Subsequently, we systematically identified and extracted additional factors we deemed potentially correlated with traffic accidents. Following a meticulous process of data screening and cleansing, we discerned that certain variables held particular significance in influencing the likelihood of accidents. Notably, these pivotal factors encompassed "Race," "Alcohol," "Gender," and "Arrest Type."
+In our pursuit of comprehensively understanding and analyzing the determinants of traffic accidents in Montgomery County, we initiated our investigation by designating "Accident" as the focal point in our dataset. Subsequently, we systematically identified and extracted additional factors we deemed potentially correlated with traffic accidents. Following a meticulous process of data screening and cleansing, we discerned that certain variables held particular significance in influencing the likelihood of accidents. Notably, these pivotal factors encompassed "Race," "Alcohol," "Gender," and "Arrest Type". 
 
 For further analysis, we combined a second dataset from Montgomery County which contained data about traffic violations and selected for race, alcohol/substance abuse, type (crash or traffic violation), and the coordinates of the event. Using census data, the coordinates of the events were displayed over a map showing race proportions by block groups in Montgomery County. 
 
-With our overarching objective aimed at generating a comprehensive analysis of traffic accidents to facilitate more equitable allocation and deployment of local police forces by the Montgomery County government, we are steadfast in assigning top priority to the examination of the correlation between race and traffic events. Furthermore we hope to uncover and analyze any potential racial bias, whether intentional or not, in these traffic violations and accidents, specifically through the possible over-representation of traffic events in the most “non-White” areas. This concept not only harmonizes with the thesis statement established at the outset but also underscores the practical significance of race as the most overtly discernible variable. In a holistic sense, delving into the interplay between race and accidents offers local governments measures to inform effective strategies as well as identify and reform any unconscious bias. Building upon this conceptual foundation, we build our primary analysis direction: "What correlations can be identified between Race and Accident?" 
-
+With our overarching objective aimed at generating a comprehensive analysis of traffic accidents, we are interested in examining the correlation between race and traffic events. Furthermore we hope to uncover and analyze any potential racial bias, whether intentional or not, in these traffic violations and accidents, specifically through the possible over-representation of traffic events in the most “non-White” areas. This concept not only harmonizes with the thesis statement established at the outset but also underscores the practical significance of race as the most overtly discernible variable. In a holistic sense, delving into the interplay between race and accidents could help Montgomery identify and reform any unconscious bias and possibly help them implement effective strategies to address this and improve traffic conditions at the same time. Building upon this conceptual foundation, we build our primary analysis direction: "What correlations can be identified between Race and Accident?" 
 
 ### Investigating Correlations Between Race and Traffic Incidents
 
 In our gathered datasets, the racial demographics in Montgomery County were delineated into six primary categories: Asian, White, Black, Hispanic, Native American, and other. It is evident that each of these population segments experiences varying levels of accident rates. To delve into the specifics, we sought to ascertain the respective crash rates for each population group, aiming to discern the percentage contribution of traffic accidents within the county. Guided by this objective, we meticulously crafted an initial visual representation in the form of a pie chart.
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(dplyr)
 library(stringr)
@@ -57,9 +56,9 @@ Figure 1. Distribution of Traffic Accidents by Race in Montgomery County
 
 The pie chart provides a clear visualization of the distribution of traffic accidents by race in Montgomery County. Notably, the largest share is attributed to the White race, comprising 34.69% of all accidents. Following closely, the Hispanic and Black races account for 28.94% and 25.45%, respectively. Conversely, the percentages for Asian, Native American, and other races are notably lower, with Native American accidents registering at just 0.18%. This observed pattern aligns with expectations, given the demographic composition of Montgomery County. Whites, Blacks, and Hispanics, as the predominant ethnic groups, naturally exhibit a higher percentage of accidents due to their larger population size. In contrast, minority groups, such as Asians, contribute proportionally fewer accidents, reflecting their relatively smaller population presence. 
 
-Building on the preceding analysis, it is evident that the White ethnicity exhibits the highest percentage of traffic accidents, underscoring its significance as a primary focal point for traffic regulation considerations. While acknowledging this finding, it is essential to recognize that the accident distribution may not provide sufficient insights for formulating valuable recommendations as government initiative references. Therefore, to discover more valuable information, our research focus pivoted toward examining the percentage of traffic accidents within each race. This shift aims to uncover potential disparities in traffic accident rates across different racial groups, fostering a more comprehensive understanding to inform targeted and equitable interventions.  
+Building on the preceding analysis, it is evident that the White ethnicity exhibits the highest percentage of traffic accidents, underscoring its significance as a primary focal point for traffic regulation considerations. While acknowledging this finding, it is essential to recognize that the accident distribution may not provide sufficient insights for formulating valuable recommendations as government initiative references. Therefore, to discover more valuable information, our research focus pivoted toward examining the percentage of traffic accidents within each race. This shift aims to uncover potential disparities in traffic accident rates across different racial groups, fostering a more comprehensive understanding to inform targeted and equitable interventions.                      
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 Contengency_table4 <- table(Race,Accident)
 Contingency_df4 <- as.data.frame(as.table(Contengency_table4))
 colnames(Contingency_df4) <- c("Race", "Accident", "Count")
@@ -86,7 +85,7 @@ Figure 2 presents a detailed breakdown of accident rates within each racial cate
 
 From first glance at this data, one might assume that prioritizing Hispanic neighborhoods emerges as an effective strategy to reduce both the total number of accidents and the accident rate. However when we look at the locations of both crashes and violations we see a different trend. 
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 suppressPackageStartupMessages(library(tidyverse)) 
 suppressPackageStartupMessages(library(ggplot2)) 
 suppressPackageStartupMessages(library(stringr)) 
@@ -141,15 +140,16 @@ race_list <- c('P1_003N' = "White alone",
                'P1_006N' = "Asian alone", 
                'P1_007N' = "Native Hawaiian and other Pacific Islander alone")
 
-ggplot() + geom_sf(data = md, aes(fill = pct)) + facet_wrap(~variable, labeller = as_labeller(race_list)) 
+ggplot() + geom_sf(data = md, aes(fill = pct)) + facet_wrap(~variable, labeller = as_labeller(race_list)) + theme(text = element_text(size = 8))
+
 ```
 
-Figure 3. Map of proportion of race by block group for Montgomery County. P1_003N = White alone, P1_004N = Black or African American alone, P1_005N = American Indian and Alaska Native alone, P1_006N = Asian alone, P1_007N = Native Hawaiian and other Pacific Islander alone. As we can see from these maps, Montgomery country is predominantly white. 
+Figure 3. Map of proportion of race by block group for Montgomery County. As we can see from these maps, White people make up a large proportion of Montgomery county. 
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 ggplot() + geom_sf(data = md, aes(fill = pct)) + 
   geom_sf(data = simplified_geo, aes(color = type), alpha = 0.1, size = 0.1) + 
-  facet_wrap(~type) 
+  facet_wrap(~type) + theme(text = element_text(size = 8), legend.position = "none")
 ```
 
 Figure 4. Map of traffic violations (blue) and crash reports (pink). There is a lot of overlap between where the two occur. 
@@ -160,7 +160,7 @@ There could also be many confounding factors in this data that intertwine with r
 
 With further analysis, we believe our findings could offer valuable insights and allow the Montgomery County government to make better informed decisions about government management, such as reinvesting their funding into community uplifting programs. By tailoring interventions based on the observed patterns, Montgomery County has the potential to address any unconscious bias and enhance traffic conditions, thereby reducing the likelihood of traffic accidents in the future and improving the county for all of its citizens. 
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 filter_Arrest_type <- df %>%
   filter(str_detect(`Arrest Type`, "Marked|Unmarked"))
 filter_Arrest_type$`Arrest Type`<-ifelse(grepl("Marked", filter_Arrest_type$`Arrest Type`), 1, 0)
@@ -216,7 +216,7 @@ Arrest Type: Classifying administrative forces into "Marked" and "Unmarked" base
 Dependent Variable:
 Accident: Assigned a value of 1 for traffic reports indicating an accident (Yes) and 0 for those without an accident (No).
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 race <- mydata$Race
 alcohol <- mydata$Alcohol
 gender <- mydata$Gender
@@ -250,16 +250,17 @@ Feature_importance_table <- ggplot(importances, aes(x = Attribute, y = Importanc
 Feature_importance_table
 ```
 
-
 Figure 6. Assessing the Significance of Features in the Logistic Regression Model
 
 Considering that the variables analyzed in our model are derived from the traffic report dataset we collected, it's crucial to acknowledge that accident rates are influenced by a myriad of factors beyond the scope of our dataset, including politics, lifestyle, and traditional culture. Instead of fixating on aspects like model improvements and errors, our emphasis shifts toward understanding the individual impact of each variable revealed by the model on the occurrence of accidents. Building on this foundation, we visually depict the significance of each coefficient in the model, illustrating their positive or negative impact on the accident probabilities.
 
 From Figure 6, first we can observe that the intercept in the logit regression model is substantially negative large, which indicates that the baseline effect of the logit is robust and proves that the probability of error is still relatively small overall. 
 
-In examining the selected factors, certain patterns emerge in their impact on the probability of accidents. Notably, instances involving a marked arrest type, the presence of alcohol, male gender, and individuals identified as White, Hispanic, or Native American tend to elevate the probability of accident. Among these variables, the presence of alcohol exerts the most substantial effect, contributing to a 1.62 increase in log-odds. Following closely, marked arrest type and Hispanic Race exhibit the second and third most significant impacts, with effects on log-odds amounting to 0.45 and 0.32, respectively. Moveover, certain factors are associated with a lower likelihood of increased accident rates. Specifically, male, identifying as Native American or White correspond to more modest effects on log-odds, measuring at 0.06, 0.01, and 0.07, respectively. The remaining factors, which generally diminish the probability of accident, exhibit relatively minor effects. Specifically, Black race demonstrates a modest negative effect of 0.19 on log-odds, while the Other race exhibits an even smaller effect of 0.09.  
+In examining the selected factors, certain patterns emerge in their impact on the probability of accidents. Notably, instances involving a marked arrest type, the presence of alcohol, male gender, and individuals identified as White, Hispanic, or Native American tend to elevate the probability of accident. Among these variables, the presence of alcohol exerts the most substantial effect, contributing to a 1.62 increase in log-odds. Following closely, marked arrest type and Hispanic Race exhibit the second and third most significant impacts, with effects on log-odds amounting to 0.45 and 0.32, respectively. Moveover, certain factors are associated with a lower likelihood of increased accident rates. Specifically, male, identifying as Native American or White correspond to more modest effects on log-odds, measuring at 0.06, 0.01, and 0.07, respectively. The remaining factors, which generally diminish the probability of accident, exhibit relatively minor effects. Specifically, Black race demonstrates a modest negative effect of 0.19 on log-odds, while the Other race exhibits an even smaller effect of 0.09. 
 
-In summary, our logistic regression model highlights distinctive patterns in the impact of various variables on the probability of accident. Female gender, Asian race, unmarked arrest type, and the absence of alcohol do not exhibit a significant influence on accident rates. However, the majority of variables, except for Black Race and Other Race, display a propensity to increase the odds of accidents with a positive effect. This nuanced understanding, derived from our model's analysis, offers valuable insights for Montgomery County. The findings can serve as a strategic reference point for comprehensively assessing traffic conditions, facilitating informed decisions in traffic scheduling, and guiding initiatives to effectively mitigate the probability of accidents. We think it is important to note however that this data could still be biased based on the distribution of police in predominantly White and non-White neighborhoods. We believe further study into the possible changes in violation and crash rates that might occur if an equal distribution of traffic regulation via police is implemented could provide important information for Montgomery, and possibly inform the traffic regulation of other communities as well. 
+In summary, our logistic regression model highlights distinctive patterns in the impact of various variables on the probability of accident. Female gender, Asian race, unmarked arrest type, and the absence of alcohol do not exhibit a significant influence on accident rates. However, the majority of variables, except for Black Race and Other Race, display a propensity to increase the odds of accidents with a positive effect. This nuanced understanding, derived from our model's analysis, offers valuable insights for Montgomery County. The findings can serve as a strategic reference point for comprehensively assessing traffic conditions, facilitating informed decisions in traffic scheduling, and guiding initiatives to effectively mitigate the probability of accidents. 
+
+We think it is important to note that this data is likely biased based on the distribution of police in predominantly White and non-White neighborhoods. The preliminary analysis of the data assumes that the total population is equally distributed across the county and therefore the density of traffic reports and accidents is correlated with race. We believe further analysis is necessary to make any definite conclusions. More detailed data about population distribution and a map of all roads in Montgomery could help provide more insight into the possible effect of race on traffic crashes and violations. 
 
 
 
