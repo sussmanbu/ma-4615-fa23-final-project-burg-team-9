@@ -135,7 +135,13 @@ simplified_geo <- simplified |>
   st_as_sf(coords = c("Longitude", "Latitude")) %>%   
   st_set_crs(4269) 
 
-ggplot() + geom_sf(data = md, aes(fill = pct)) + facet_wrap(~variable) 
+race_list <- c('P1_003N' = "White alone", 
+               'P1_004N' = "Black or African American alone", 
+               'P1_005N' = "American Indian and Alaska Native alone", 
+               'P1_006N' = "Asian alone", 
+               'P1_007N' = "Native Hawaiian and other Pacific Islander alone")
+
+ggplot() + geom_sf(data = md, aes(fill = pct)) + facet_wrap(~variable, labeller = as_labeller(race_list)) 
 ```
 
 Figure 3. Map of proportion of race by block group for Montgomery County. P1_003N = White alone, P1_004N = Black or African American alone, P1_005N = American Indian and Alaska Native alone, P1_006N = Asian alone, P1_007N = Native Hawaiian and other Pacific Islander alone. As we can see from these maps, Montgomery country is predominantly white. 
