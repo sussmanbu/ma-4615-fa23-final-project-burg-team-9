@@ -290,29 +290,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   |                                                                            
   |                                                                      |   0%
   |                                                                            
-  |=                                                                     |   1%
-  |                                                                            
   |==                                                                    |   2%
   |                                                                            
   |==                                                                    |   3%
   |                                                                            
   |===                                                                   |   5%
   |                                                                            
-  |====                                                                  |   6%
-  |                                                                            
   |=====                                                                 |   7%
   |                                                                            
+  |======                                                                |   8%
+  |                                                                            
   |======                                                                |   9%
+  |                                                                            
+  |=======                                                               |  10%
   |                                                                            
   |========                                                              |  11%
   |                                                                            
   |==========                                                            |  14%
   |                                                                            
-  |==========                                                            |  15%
-  |                                                                            
   |===========                                                           |  16%
   |                                                                            
   |============                                                          |  17%
+  |                                                                            
+  |=============                                                         |  18%
   |                                                                            
   |=============                                                         |  19%
   |                                                                            
@@ -326,7 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   |                                                                            
   |==================                                                    |  26%
   |                                                                            
-  |===================                                                   |  27%
+  |====================                                                  |  28%
   |                                                                            
   |=====================                                                 |  30%
   |                                                                            
@@ -334,13 +334,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   |                                                                            
   |=======================                                               |  33%
   |                                                                            
-  |=========================                                             |  35%
+  |========================                                              |  34%
   |                                                                            
   |=========================                                             |  36%
   |                                                                            
-  |==========================                                            |  38%
-  |                                                                            
-  |============================                                          |  40%
+  |===========================                                           |  39%
   |                                                                            
   |=============================                                         |  41%
   |                                                                            
@@ -348,7 +346,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   |                                                                            
   |===============================                                       |  44%
   |                                                                            
-  |================================                                      |  46%
+  |=================================                                     |  47%
+  |                                                                            
+  |==================================                                    |  48%
   |                                                                            
   |===================================                                   |  50%
   |                                                                            
@@ -356,25 +356,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   |                                                                            
   |======================================                                |  55%
   |                                                                            
-  |========================================                              |  57%
+  |=======================================                               |  56%
+  |                                                                            
+  |=========================================                             |  58%
+  |                                                                            
+  |===========================================                           |  62%
   |                                                                            
   |============================================                          |  63%
   |                                                                            
   |=============================================                         |  64%
   |                                                                            
+  |=============================================                         |  65%
+  |                                                                            
   |==============================================                        |  66%
   |                                                                            
   |======================================================                |  77%
   |                                                                            
+  |=======================================================               |  79%
+  |                                                                            
+  |=========================================================             |  81%
+  |                                                                            
+  |==========================================================            |  83%
+  |                                                                            
+  |============================================================          |  86%
+  |                                                                            
+  |=============================================================         |  88%
+  |                                                                            
+  |==============================================================        |  89%
+  |                                                                            
   |================================================================      |  91%
   |                                                                            
   |=================================================================     |  92%
-  |                                                                            
-  |==================================================================    |  95%
-  |                                                                            
-  |====================================================================  |  97%
-  |                                                                            
-  |===================================================================== |  99%
   |                                                                            
   |======================================================================| 100%</code></pre>
 </div>
@@ -406,7 +418,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> md, <span class="fu">aes</span>(<span class="at">fill =</span> pct)) <span class="sc">+</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> simplified_geo, <span class="fu">aes</span>(<span class="at">color =</span> type), <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">0.1</span>) <span class="sc">+</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>type) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), <span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>type) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">angle =</span> <span class="dv">45</span>), <span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="analysis_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
