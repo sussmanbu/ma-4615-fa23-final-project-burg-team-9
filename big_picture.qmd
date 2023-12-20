@@ -25,7 +25,7 @@ The pie chart below shows the categories of violations colored to show the relat
 
 ### Visualizations
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(ggplot2)
 load(here::here("dataset", "traffic_violations.RData"))
 data <- traffic_data_clean
@@ -61,7 +61,7 @@ ggplot(proportions_df_long2, aes(x = Race, y = Proportion, fill = Alcohol)) +
 ```
 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 proportions_violations <- prop.table(table(data$'Violation Type'))
 proportions_violations_df <- as.data.frame(proportions_violations)
 proportions_violations_df$ViolationType <- rownames(proportions_violations_df)

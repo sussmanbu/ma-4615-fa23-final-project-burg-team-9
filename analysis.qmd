@@ -23,7 +23,7 @@ With our overarching objective aimed at generating a comprehensive analysis of t
 
 In our gathered datasets, the racial demographics in Montgomery County were delineated into six primary categories: Asian, White, Black, Hispanic, Native American, and other. It is evident that each of these population segments experiences varying levels of accident rates. To delve into the specifics, we sought to ascertain the respective crash rates for each population group, aiming to discern the percentage contribution of traffic accidents within the county. Guided by this objective, we meticulously crafted an initial visual representation in the form of a pie chart.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(dplyr)
 library(stringr)
@@ -59,7 +59,7 @@ The pie chart provides a clear visualization of the distribution of traffic acci
 
 Building on the preceding analysis, it is evident that the White ethnicity exhibits the highest percentage of traffic accidents, underscoring its significance as a primary focal point for traffic regulation considerations. While acknowledging this finding, it is essential to recognize that the accident distribution may not provide sufficient insights for formulating valuable recommendations as government initiative references. Therefore, to discover more valuable information, our research focus pivoted toward examining the percentage of traffic accidents within each race. This shift aims to uncover potential disparities in traffic accident rates across different racial groups, fostering a more comprehensive understanding to inform targeted and equitable interventions.  
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 Contengency_table4 <- table(Race,Accident)
 Contingency_df4 <- as.data.frame(as.table(Contengency_table4))
 colnames(Contingency_df4) <- c("Race", "Accident", "Count")
@@ -86,7 +86,7 @@ Figure 2 presents a detailed breakdown of accident rates within each racial cate
 
 From first glance at this data, one might assume that prioritizing Hispanic neighborhoods emerges as an effective strategy to reduce both the total number of accidents and the accident rate. However when we look at the locations of both crashes and violations we see a different trend. 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 suppressPackageStartupMessages(library(tidyverse)) 
 suppressPackageStartupMessages(library(ggplot2)) 
 suppressPackageStartupMessages(library(stringr)) 
@@ -146,7 +146,7 @@ ggplot() + geom_sf(data = md, aes(fill = pct)) + facet_wrap(~variable, labeller 
 
 Figure 3. Map of proportion of race by block group for Montgomery County. P1_003N = White alone, P1_004N = Black or African American alone, P1_005N = American Indian and Alaska Native alone, P1_006N = Asian alone, P1_007N = Native Hawaiian and other Pacific Islander alone. As we can see from these maps, Montgomery country is predominantly white. 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 ggplot() + geom_sf(data = md, aes(fill = pct)) + 
   geom_sf(data = simplified_geo, aes(color = type), alpha = 0.1, size = 0.1) + 
   facet_wrap(~type) 
@@ -160,7 +160,7 @@ There could also be many confounding factors in this data that intertwine with r
 
 With further analysis, we believe our findings could offer valuable insights and allow the Montgomery County government to make better informed decisions about government management, such as reinvesting their funding into community uplifting programs. By tailoring interventions based on the observed patterns, Montgomery County has the potential to address any unconscious bias and enhance traffic conditions, thereby reducing the likelihood of traffic accidents in the future and improving the county for all of its citizens. 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 filter_Arrest_type <- df %>%
   filter(str_detect(`Arrest Type`, "Marked|Unmarked"))
 filter_Arrest_type$`Arrest Type`<-ifelse(grepl("Marked", filter_Arrest_type$`Arrest Type`), 1, 0)
@@ -216,7 +216,7 @@ Arrest Type: Classifying administrative forces into "Marked" and "Unmarked" base
 Dependent Variable:
 Accident: Assigned a value of 1 for traffic reports indicating an accident (Yes) and 0 for those without an accident (No).
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 race <- mydata$Race
 alcohol <- mydata$Alcohol
 gender <- mydata$Gender
