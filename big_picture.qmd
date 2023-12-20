@@ -27,7 +27,8 @@ The pie chart below shows the categories of violations colored to show the relat
 
 ```{r, echo=FALSE}
 library(ggplot2)
-# data <- traffic_data_clean
+load(here::here("dataset", "traffic_violations.RData"))
+data <- traffic_data_clean
 proportions_data <- table(data$Race, data$Gender)
 proportions_data <- as.data.frame.matrix(proportions_data)
 proportions_df <- as.data.frame(proportions_data)
