@@ -27,8 +27,8 @@ In our gathered datasets, the racial demographics in Montgomery County were deli
 library(ggplot2)
 library(dplyr)
 library(stringr)
-crash_data <- read.csv(here::here("dataset-ignore", "Crash_Reporting_-_Incidents_Data.csv")
-load(here::here("dataset", "traffic_violations.RData")
+crash_data <- read.csv(here::here("dataset-ignore", "Crash_Reporting_-_Incidents_Data.csv"))
+load(here::here("dataset", "traffic_violations.RData"))
 df <- traffic_data_clean
 Race <- df$Race
 Alcohol <- df$Alcohol
