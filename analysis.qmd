@@ -87,6 +87,7 @@ Figure 2 presents a detailed breakdown of accident rates within each racial cate
 From first glance at this data, one might assume that prioritizing Hispanic neighborhoods emerges as an effective strategy to reduce both the total number of accidents and the accident rate. However when we look at the locations of both crashes and violations we see a different trend. 
 
 ```{r, message=FALSE, warning=FALSE}
+suppressPackageStartupMessages(library(tidyverse)) 
 suppressPackageStartupMessages(library(tidycensus)) 
 suppressPackageStartupMessages(library(sf)) 
 
