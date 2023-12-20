@@ -139,7 +139,7 @@ race_list <- c('P1_003N' = "White alone",
                'P1_006N' = "Asian alone", 
                'P1_007N' = "Native Hawaiian and other Pacific Islander alone")
 
-ggplot() + geom_sf(data = md, aes(fill = pct)) + facet_wrap(~variable, labeller = as_labeller(race_list)) + theme(text = element_text(size = 8))
+ggplot() + geom_sf(data = md, aes(fill = pct)) + facet_wrap(~variable, labeller = as_labeller(race_list)) + theme(axis.text.x = element_text(size = 8, angle = 45))
 
 ```
 
@@ -148,7 +148,7 @@ Figure 3. Map of proportion of race by block group for Montgomery County. As we 
 ```{r, message=FALSE, warning=FALSE}
 ggplot() + geom_sf(data = md, aes(fill = pct)) + 
   geom_sf(data = simplified_geo, aes(color = type), alpha = 0.1, size = 0.1) + 
-  facet_wrap(~type) + theme(text = element_text(size = 8, angle = 45), legend.position = "none")
+  facet_wrap(~type) + theme(text = element_text(size = 8), legend.position = "none")
 ```
 
 Figure 4. Map of traffic violations (blue) and crash reports (pink). There is a lot of overlap between where the two occur. 
