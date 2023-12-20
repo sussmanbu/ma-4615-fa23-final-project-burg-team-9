@@ -157,20 +157,6 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="investigating-correlations-between-race-and-traffic-incidents">Investigating Correlations Between Race and Traffic Incidents</h3>
 <p>In our gathered datasets, the racial demographics in Montgomery County were delineated into six primary categories: Asian, White, Black, Hispanic, Native American, and other. It is evident that each of these population segments experiences varying levels of accident rates. To delve into the specifics, we sought to ascertain the respective crash rates for each population group, aiming to discern the percentage contribution of traffic accidents within the county. Guided by this objective, we meticulously crafted an initial visual representation in the form of a pie chart.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                 ACCIDENT
 RACE                Yes
@@ -197,24 +183,6 @@ RACE                Yes
 <p>Figure 2 presents a detailed breakdown of accident rates within each racial category, offering a nuanced perspective distinct from the overall pie chart analyzing accident counts by race. Notably, the accident rate within the White race is comparatively lower at 2.786%, while the Hispanic race exhibits a higher accident rate of 3.568%. This implies that for every 100 traffic reports concerning the Hispanic race, 3.568 accidents are recorded. Further insights reveal that, despite Native Americans and Asians experiencing a lower frequency of accidents, their accident rates are relatively elevated at 2.801% and 2.648%, respectively, in comparison to the corresponding traffic report figures for their ethnicities. Conversely, although the Black ethnic group registers the third-highest number of accidents, its accident rate is the lowest at 2.182%.</p>
 <p>From first glance at this data, one might assume that prioritizing Hispanic neighborhoods emerges as an effective strategy to reduce both the total number of accidents and the accident rate. However when we look at the locations of both crashes and violations we see a different trend.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: One or more parsing issues, call `problems()` on your data frame for details,
-e.g.:
-  dat &lt;- vroom(...)
-  problems(dat)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Getting data from the 2020 decennial Census</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Downloading feature geometry from the Census website.  To cache shapefiles for use in future sessions, set `options(tigris_use_cache = TRUE)`.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Using the PL 94-171 Redistricting Data Summary File</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   |                                                                            
@@ -224,11 +192,11 @@ e.g.:
   |                                                                            
   |==                                                                    |   2%
   |                                                                            
+  |==                                                                    |   3%
+  |                                                                            
   |===                                                                   |   5%
   |                                                                            
   |====                                                                  |   6%
-  |                                                                            
-  |=====                                                                 |   7%
   |                                                                            
   |======                                                                |   8%
   |                                                                            
@@ -236,82 +204,69 @@ e.g.:
   |                                                                            
   |=======                                                               |  10%
   |                                                                            
-  |========                                                              |  12%
+  |========                                                              |  11%
   |                                                                            
   |=========                                                             |  13%
   |                                                                            
-  |===============                                                       |  21%
+  |==========                                                            |  14%
+  |                                                                            
+  |==========                                                            |  15%
+  |                                                                            
+  |===========                                                           |  16%
+  |                                                                            
+  |=============                                                         |  18%
+  |                                                                            
+  |=============                                                         |  19%
+  |                                                                            
+  |===============                                                       |  22%
   |                                                                            
   |================                                                      |  23%
   |                                                                            
-  |=================                                                     |  24%
+  |==================                                                    |  26%
   |                                                                            
-  |===================                                                   |  26%
+  |===================                                                   |  27%
   |                                                                            
-  |====================                                                  |  29%
-  |                                                                            
-  |======================                                                |  31%
+  |======================                                                |  32%
   |                                                                            
   |=======================                                               |  33%
   |                                                                            
-  |========================                                              |  35%
+  |========================                                              |  34%
   |                                                                            
-  |=========================                                             |  36%
-  |                                                                            
-  |==========================                                            |  37%
-  |                                                                            
-  |===========================                                           |  38%
+  |===========================                                           |  39%
   |                                                                            
   |============================                                          |  40%
   |                                                                            
   |==============================                                        |  43%
   |                                                                            
-  |===============================                                       |  45%
+  |==================================                                    |  48%
   |                                                                            
-  |================================                                      |  46%
+  |==================================                                    |  49%
   |                                                                            
-  |=================================                                     |  47%
-  |                                                                            
-  |===================================                                   |  49%
-  |                                                                            
-  |=====================================                                 |  53%
+  |===================================                                   |  50%
   |                                                                            
   |========================================                              |  57%
   |                                                                            
+  |=========================================                             |  58%
+  |                                                                            
   |=============================================                         |  64%
   |                                                                            
-  |===============================================                       |  68%
+  |=============================================                         |  65%
   |                                                                            
-  |=================================================                     |  70%
+  |================================================                      |  68%
   |                                                                            
-  |===================================================                   |  72%
+  |===================================================                   |  73%
   |                                                                            
   |=====================================================                 |  76%
   |                                                                            
-  |=======================================================               |  78%
+  |========================================================              |  80%
   |                                                                            
-  |=========================================================             |  82%
+  |===========================================================           |  84%
   |                                                                            
-  |==========================================================            |  83%
+  |===============================================================       |  90%
   |                                                                            
-  |============================================================          |  86%
-  |                                                                            
-  |=============================================================         |  87%
-  |                                                                            
-  |==================================================================    |  94%
-  |                                                                            
-  |====================================================================  |  98%
-  |                                                                            
-  |===================================================================== |  99%
+  |====================================================================  |  97%
   |                                                                            
   |======================================================================| 100%</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Note: 2020 decennial Census data use differential privacy, a technique that
-introduces errors into data to preserve respondent confidentiality.
-ℹ Small counts should be interpreted with caution.
-ℹ See https://www.census.gov/library/fact-sheets/2021/protecting-the-confidentiality-of-the-2020-census-redistricting-data.html for additional guidance.
-This message is displayed once per session.</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="analysis_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
@@ -328,14 +283,6 @@ This message is displayed once per session.</code></pre>
 <p>There could also be many confounding factors in this data that intertwine with race specifically. For example, one interpretation of the data could suggest that there is a need for special preventive measures in ethnic minority Native American communities due to their elevated accident rates. Instead of funding additional policing as a “preventative measure”, perhaps the driver education in communities of color might be inadequate and the government should direct their funding to better driver education programs instead.</p>
 <p>With further analysis, we believe our findings could offer valuable insights and allow the Montgomery County government to make better informed decisions about government management, such as reinvesting their funding into community uplifting programs. By tailoring interventions based on the observed patterns, Montgomery County has the potential to address any unconscious bias and enhance traffic conditions, thereby reducing the likelihood of traffic accidents in the future and improving the county for all of its citizens.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'month_year'. You can override using the
-`.groups` argument.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.</code></pre>
-</div>
 <div class="cell-output-display">
 <p><img src="analysis_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -361,23 +308,23 @@ glm(formula = y_train ~ ., family = "binomial", data = cbind(y_train,
 
 Coefficients:
                     Estimate Std. Error  z value Pr(&gt;|z|)    
-(Intercept)         -4.10131    0.03603 -113.826  &lt; 2e-16 ***
-raceBLACK           -0.19557    0.02356   -8.301  &lt; 2e-16 ***
-raceHISPANIC         0.29584    0.02339   12.647  &lt; 2e-16 ***
-raceNATIVE AMERICAN  0.02860    0.11983    0.239  0.81137    
-raceOTHER           -0.09620    0.03057   -3.147  0.00165 ** 
-raceWHITE            0.06119    0.02301    2.659  0.00784 ** 
-alcoholYes           1.58847    0.08973   17.702  &lt; 2e-16 ***
-genderM              0.06306    0.01097    5.748 9.03e-09 ***
-arrest_type          0.49027    0.02886   16.989  &lt; 2e-16 ***
+(Intercept)         -4.08220    0.03582 -113.972  &lt; 2e-16 ***
+raceBLACK           -0.18614    0.02367   -7.864 3.71e-15 ***
+raceHISPANIC         0.30634    0.02350   13.037  &lt; 2e-16 ***
+raceNATIVE AMERICAN  0.06940    0.11837    0.586 0.557681    
+raceOTHER           -0.10512    0.03076   -3.418 0.000631 ***
+raceWHITE            0.07575    0.02311    3.277 0.001049 ** 
+alcoholYes           1.67431    0.08727   19.186  &lt; 2e-16 ***
+genderM              0.05719    0.01096    5.218 1.81e-07 ***
+arrest_type          0.46462    0.02852   16.292  &lt; 2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 374143  on 1467540  degrees of freedom
-Residual deviance: 372163  on 1467532  degrees of freedom
-AIC: 372181
+    Null deviance: 374335  on 1467540  degrees of freedom
+Residual deviance: 372336  on 1467532  degrees of freedom
+AIC: 372354
 
 Number of Fisher Scoring iterations: 6</code></pre>
 </div>
