@@ -93,7 +93,7 @@ suppressPackageStartupMessages(library(stringr))
 library(tidycensus) 
 library(sf) 
 
-census_api_key("d60e1c9aa5c6a445f991501def579b743fc1a5d8", install = TRUE) 
+# census_api_key("d60e1c9aa5c6a445f991501def579b743fc1a5d8", install = TRUE) 
 
 crash_data <- read_csv(here::here("dataset-ignore", "Crash_Reporting_-_Incidents_Data.csv"),          show_col_types = FALSE) 
 
