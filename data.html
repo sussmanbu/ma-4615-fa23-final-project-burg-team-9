@@ -109,7 +109,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#traffic-violations-dataset" id="toc-traffic-violations-dataset" class="nav-link active" data-scroll-target="#traffic-violations-dataset">Traffic Violations Dataset</a></li>
+  <li><a href="#crash-reporting-dataset" id="toc-crash-reporting-dataset" class="nav-link" data-scroll-target="#crash-reporting-dataset">Crash Reporting Dataset</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -137,11 +144,19 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p><img src="https://www.montgomerycountymd.gov/mcgresponsive/Resources/Images/countyseal.png" class="img-fluid"></p>
+<section id="traffic-violations-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="traffic-violations-dataset">Traffic Violations Dataset</h3>
 <p>The data was originally found on Kaggle.com and then source data was later found on the following <a href="https://data.montgomerycountymd.gov/Public-Safety/Traffic-Violations/4mse-ku6q">dataMontomery</a> website. This data is updated frequently, our dataset is from November 3rd, 2023. The data was originally collected by the Montgomery County Police Station in Maryland. It was collected for the purpose of observing drug and traffic violations and creating a government and police record of violations. It was put together using traffic violation information from all electronic traffic violations issued in Montgomery County.</p>
 <p>The data file that was used was originally in the form of a CSV file. This original dataset had 43 variables, but because it was large, we chose to use only the more relevant 14 variables in our cleaned data set, which are Date of stop, Time of stop, Description, Location, Accident, Fatal, Alcohol, Driver’s License State, Year, Make, Model, Violation type, Race, and Arrest type. Description shows what the specific charge was, such as exceeding the posted speed limit. Location indicates the specific street in Montgomery County where the violation occurred, while Driver’s License State shows the state where the driver is from, which is not necessarily Maryland. Make and Model refers to the car that was being driven. Fatal and Alcohol only say Yes or No, while Violation Type and Arrest Type provide more specific descriptions of the violation that occurred and its outcome, respectively.</p>
-<p>For preliminary cleaning, we removed columns that we believe would not be helpful or relevant in our data analysis in our <a href="./scripts/load_and_clean_data.R">cleaning script</a>. Some examples of this are latitude and longitude coordinates. No additional R packages were requrired for this and no other data sets were merged with the current data.</p>
+<p>For preliminary cleaning, we removed columns that we believe would not be helpful or relevant in our data analysis in our <a href="./scripts/load_and_clean_data.R">cleaning script</a>. Some examples of this are latitude and longitude coordinates. No additional R packages were required for this and no other data sets were merged with the current data to begin with for the exploratory data analysis. We later merged the crash reporting dataset summarized below with this dataset for our further analysis and statistical modeling.</p>
+</section>
+<section id="crash-reporting-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="crash-reporting-dataset">Crash Reporting Dataset</h3>
+<p>The second dataset we chose to use for our analysis was found on the same website as our original dataset, https://data.montgomerycountymd.gov/Public-Safety/Traffic-Violations/4mse-ku6q. This dataset also contains information for Montgomery County, Maryland, making it a relevant addition to our preliminary dataset to provide a more comprehensive perspective on accidents in this county and the patterns underlying them. The data was collected by the Automated Crash Reporting System, referring to as ACRS, by the Maryland State Police. It was then reported by the Montgomery County Police, Gaithersburg Police, Rockville Police, or the Maryland-National Capital Park Police. The reports were created for the purpose of addressing public safety. For our data analysis, we are specifically using the data reported by the Montgomery County Police to fit with our traffic violations data.</p>
+<p>The crash reporting incidents data provides information regarding reported collisions in Montgomery County and their relevant details. This includes crashes that occurred on both county and local roadways in the county. It has approximately 96,801 rows of data and 43 columns, originally in the form of a CSV. These columns include relevant information regarding the collision occurrences that were reported included report number, local case number, date and time, collision type, and weather. The other major columns it includes are surface condition of the road, latitude and longitude, and whether the crash occurred at a junction or intersection. For our preliminary data cleaning, we began by condensing the dataset by removing columns we we did believe to be necessary for our analysis, which included ACRS report type since we already knew we were focusing on collisions, and Agency Name, since it was Montgomery County Police for every data point. This dataset was then joined with the traffic violations dataset using longitude and latitude.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
